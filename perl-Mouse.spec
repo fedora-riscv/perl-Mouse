@@ -1,7 +1,7 @@
 
 Name:       perl-Mouse 
 Version:    0.09 
-Release:    1%{?dist}
+Release:        2%{?dist}
 License:    GPL+ or Artistic 
 Group:      Development/Libraries
 Summary:    Moose minus the antlers 
@@ -82,6 +82,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Mon Oct 06 2008 Chris Weyl <cweyl@alumni.drew.edu> 0.09-2
+- bump
+
 * Wed Oct 01 2008 Chris Weyl <cweyl@alumni.drew.edu> 0.09-1
 - update to 0.09
 - add manual requires on the "soft" dependencies
