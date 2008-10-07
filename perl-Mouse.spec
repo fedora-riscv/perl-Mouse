@@ -1,7 +1,7 @@
 
 Name:       perl-Mouse 
 Version:    0.09 
-Release:        2%{?dist}
+Release:    2%{?dist}.1
 License:    GPL+ or Artistic 
 Group:      Development/Libraries
 Summary:    Moose minus the antlers 
@@ -16,9 +16,13 @@ BuildRequires: perl(ExtUtils::MakeMaker)
 BuildRequires: perl(MRO::Compat)
 BuildRequires: perl(Scalar::Util)
 # tests
-BuildRequires: perl(Moose)
 BuildRequires: perl(Test::Exception)
 BuildRequires: perl(Test::More)
+
+# broken on the level in F < 10
+%if %{fedora} >= 10
+BuildRequires: perl(Moose)
+%endif
 
 # Strictly speaking, since 0.09 these are "soft dependencies", that is, Mouse
 # will take advantage of them (and run faster) if they're there; but can cope
@@ -82,6 +86,10 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Mon Oct 06 2008 Chris Weyl <cweyl@alumni.drew.edu> 0.09-2.1
+- nix perl(Moose) as a br for devel; tests fail with the level currently in
+  anything but rawhide
+
 * Mon Oct 06 2008 Chris Weyl <cweyl@alumni.drew.edu> 0.09-2
 - bump
 
