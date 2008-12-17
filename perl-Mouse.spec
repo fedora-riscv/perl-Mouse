@@ -1,7 +1,7 @@
 
 Name:       perl-Mouse 
-Version:    0.09 
-Release:        2%{?dist}
+Version:        0.13
+Release:        1%{?dist}
 License:    GPL+ or Artistic 
 Group:      Development/Libraries
 Summary:    Moose minus the antlers 
@@ -82,6 +82,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Tue Dec 16 2008 Chris Weyl <cweyl@alumni.drew.edu> 0.13-1
+- update to 0.13
+
 * Mon Oct 06 2008 Chris Weyl <cweyl@alumni.drew.edu> 0.09-2
 - bump
 
