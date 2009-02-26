@@ -1,7 +1,7 @@
 
 Name:       perl-Mouse 
 Version:        0.17
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:    GPL+ or Artistic 
 Group:      Development/Libraries
 Summary:    Moose minus the antlers 
@@ -82,6 +82,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.17-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Sun Feb 22 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.17-1
 - update to 0.17
 
