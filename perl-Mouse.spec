@@ -1,6 +1,6 @@
 
 Name:       perl-Mouse 
-Version:        0.17
+Version:        0.19
 Release:        1%{?dist}
 License:    GPL+ or Artistic 
 Group:      Development/Libraries
@@ -14,7 +14,7 @@ BuildArch:  noarch
 BuildRequires: perl(Class::Method::Modifiers) >= 1.01
 BuildRequires: perl(ExtUtils::MakeMaker)
 BuildRequires: perl(MRO::Compat)
-BuildRequires: perl(Scalar::Util)
+BuildRequires: perl(Scalar::Util) >= 1.14
 # tests
 BuildRequires: perl(Moose)
 BuildRequires: perl(Test::Exception)
@@ -82,6 +82,12 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Thu Apr 02 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.19-1
+- update to 0.19
+
+* Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.17-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Sun Feb 22 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.17-1
 - update to 0.17
 
