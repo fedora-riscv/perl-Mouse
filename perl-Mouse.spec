@@ -1,6 +1,6 @@
 
 Name:       perl-Mouse 
-Version:        0.19
+Version:        0.22
 Release:        1%{?dist}
 License:    GPL+ or Artistic 
 Group:      Development/Libraries
@@ -82,6 +82,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Sun May 03 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.22-1
+- update to 0.22
+
 * Thu Apr 02 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.19-1
 - update to 0.19
 
