@@ -1,24 +1,23 @@
-
-Name:       perl-Mouse 
-Version:        0.22
-Release:        1%{?dist}
-License:    GPL+ or Artistic 
+Name:       perl-Mouse
+Version:    0.23
+Release:    1%{?dist}
+License:    GPL+ or Artistic
 Group:      Development/Libraries
-Summary:    Moose minus the antlers 
-Source:     http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Mouse-%{version}.tar.gz 
+Summary:    Moose minus the antlers
+Source:     http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Mouse-%{version}.tar.gz
 Url:        http://search.cpan.org/dist/Mouse
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n) 
+BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:   perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 BuildArch:  noarch
 
 BuildRequires: perl(Class::Method::Modifiers) >= 1.01
-BuildRequires: perl(ExtUtils::MakeMaker)
+BuildRequires: perl(ExtUtils::MakeMaker) >= 6.42
 BuildRequires: perl(MRO::Compat)
 BuildRequires: perl(Scalar::Util) >= 1.14
 # tests
 BuildRequires: perl(Moose)
-BuildRequires: perl(Test::Exception)
-BuildRequires: perl(Test::More)
+BuildRequires: perl(Test::Exception) >= 0.21
+BuildRequires: perl(Test::More) >= 0.8
 
 # Strictly speaking, since 0.09 these are "soft dependencies", that is, Mouse
 # will take advantage of them (and run faster) if they're there; but can cope
@@ -31,14 +30,14 @@ Requires:      perl(MRO::Compat)              >= 0.09
 
 
 %description
-Moose, a powerful metaobject-fuelled extension of the Perl 5 object system, 
+Moose, a powerful metaobject-fuelled extension of the Perl 5 object system,
 is wonderful.  (For more information on Moose, please see 'perldoc Moose'
 after installing the perl-Moose package.)
 
 Unfortunately, it's a little slow. Though significant progress has been
 made over the years, the compile time penalty is a non-starter for some
 applications.  Mouse aims to alleviate this by providing a subset of Moose's
-functionality, faster. 
+functionality, faster.
 
 %prep
 %setup -q -n Mouse-%{version}
@@ -73,15 +72,21 @@ find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 make test
 
 %clean
-rm -rf %{buildroot} 
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc Changes t/ 
+%doc Changes t/
 %{perl_vendorlib}/*
 %{_mandir}/man3/*.3*
 
 %changelog
+* Tue Jun 02 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.23-1
+- auto-update to 0.23 (by cpan-spec-update 0.01)
+- altered br on perl(Test::Exception) (0 => 0.21)
+- altered br on perl(ExtUtils::MakeMaker) (0 => 6.42)
+- altered br on perl(Test::More) (0 => 0.8)
+
 * Sun May 03 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.22-1
 - update to 0.22
 
