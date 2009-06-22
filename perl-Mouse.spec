@@ -1,5 +1,5 @@
 Name:       perl-Mouse
-Version:    0.23
+Version:    0.25
 Release:    1%{?dist}
 License:    GPL+ or Artistic
 Group:      Development/Libraries
@@ -25,7 +25,7 @@ BuildRequires: perl(Test::More) >= 0.8
 # "recommends" in rpm yet, let's manually require them here.
 Requires:      perl(Class::Method::Modifiers) >= 1.01
 Requires:      perl(Test::Exception)          >= 0.27
-Requires:      perl(Scalar::Util)             >= 1.19
+Requires:      perl(Scalar::Util)             >= 1.14
 Requires:      perl(MRO::Compat)              >= 0.09
 
 
@@ -81,6 +81,10 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Mon Jun 22 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.25-1
+- auto-update to 0.25 (by cpan-spec-update 0.01)
+- altered req on perl(Scalar::Util) (1.19 => 1.14)
+
 * Tue Jun 02 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.23-1
 - auto-update to 0.23 (by cpan-spec-update 0.01)
 - altered br on perl(Test::Exception) (0 => 0.21)
