@@ -1,5 +1,5 @@
 Name:       perl-Mouse
-Version:    0.25
+Version:    0.27
 Release:    1%{?dist}
 License:    GPL+ or Artistic
 Group:      Development/Libraries
@@ -81,6 +81,12 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Fri Jul 31 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.27-1
+- auto-update to 0.27 (by cpan-spec-update 0.01)
+
+* Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.25-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Mon Jun 22 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.25-1
 - auto-update to 0.25 (by cpan-spec-update 0.01)
 - altered req on perl(Scalar::Util) (1.19 => 1.14)
