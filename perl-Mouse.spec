@@ -1,10 +1,10 @@
 Name:       perl-Mouse
-Version:    0.27
+Version:    0.28
 Release:    1%{?dist}
 License:    GPL+ or Artistic
 Group:      Development/Libraries
 Summary:    Moose minus the antlers
-Source:     http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Mouse-%{version}.tar.gz
+Source:     http://search.cpan.org/CPAN/authors/id/S/SU/SUNNAVY/Mouse-%{version}.tar.gz
 Url:        http://search.cpan.org/dist/Mouse
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:   perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Sat Sep 19 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.28-1
+- auto-update to 0.28 (by cpan-spec-update 0.01)
+
 * Fri Jul 31 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.27-1
 - auto-update to 0.27 (by cpan-spec-update 0.01)
 
