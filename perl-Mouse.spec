@@ -1,10 +1,10 @@
 Name:       perl-Mouse
-Version:    0.28
+Version:    0.35
 Release:    1%{?dist}
 License:    GPL+ or Artistic
 Group:      Development/Libraries
 Summary:    Moose minus the antlers
-Source:     http://search.cpan.org/CPAN/authors/id/S/SU/SUNNAVY/Mouse-%{version}.tar.gz
+Source:     http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz
 Url:        http://search.cpan.org/dist/Mouse
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:   perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
@@ -16,18 +16,13 @@ BuildRequires: perl(MRO::Compat)
 BuildRequires: perl(Scalar::Util) >= 1.14
 # tests
 BuildRequires: perl(Moose)
-BuildRequires: perl(Test::Exception) >= 0.21
-BuildRequires: perl(Test::More) >= 0.8
+BuildRequires: perl(Test::Exception) >= 0.27
+BuildRequires: perl(Test::More) >= 0.88
 
-# Strictly speaking, since 0.09 these are "soft dependencies", that is, Mouse
-# will take advantage of them (and run faster) if they're there; but can cope
-# otherwise.  As they're already all in Fedora, and we don't have a
-# "recommends" in rpm yet, let's manually require them here.
-Requires:      perl(Class::Method::Modifiers) >= 1.01
-Requires:      perl(Test::Exception)          >= 0.27
-Requires:      perl(Scalar::Util)             >= 1.14
-Requires:      perl(MRO::Compat)              >= 0.09
+# "soft requires"
+BuildRequires: perl(MRO::Compat)
 
+%{?perl_default_filter}
 
 %description
 Moose, a powerful metaobject-fuelled extension of the Perl 5 object system,
@@ -42,18 +37,9 @@ functionality, faster.
 %prep
 %setup -q -n Mouse-%{version}
 
-find t/ -type f -exec perl -pi -e 's|^#!perl|#!/usr/bin/perl|' {} +
-
-# make sure doc/tests don't generate provides
-# note we first filter out the bits in _docdir...
-cat << \EOF > %{name}-prov
-#!/bin/sh
-%{__perl_provides} `perl -p -e 's|%{_docdir}/%{name}-%{version}\S+||'`
-EOF
-
-%define __perl_provides %{_builddir}/Mouse-%{version}/%{name}-prov
-chmod +x %{__perl_provides}
-
+find .           -type f -exec chmod -c -x {} +
+find t/          -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
+find benchmarks/ -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -76,11 +62,20 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc Changes t/
+%doc Changes benchmarks/ t/
 %{perl_vendorlib}/*
 %{_mandir}/man3/*.3*
 
 %changelog
+* Sun Sep 27 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.35-1
+- update filtering
+- drop our soft-requires (except 1).  Anything using Mouse by this point
+  should know to require them if their bits are needed.
+- add benchmarks/ to doc
+- auto-update to 0.35 (by cpan-spec-update 0.01)
+- altered br on perl(Test::Exception) (0.21 => 0.27)
+- altered br on perl(Test::More) (0.8 => 0.88)
+
 * Sat Sep 19 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.28-1
 - auto-update to 0.28 (by cpan-spec-update 0.01)
 
