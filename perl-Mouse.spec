@@ -1,6 +1,6 @@
 Name:       perl-Mouse
 Version:    0.35
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:    GPL+ or Artistic
 Group:      Development/Libraries
 Summary:    Moose minus the antlers
@@ -67,6 +67,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Mon Dec  7 2009 Stepan Kasal <skasal@redhat.com> - 0.35-2
+- rebuild against perl 5.10.1
+
 * Sun Sep 27 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.35-1
 - update filtering
 - drop our soft-requires (except 1).  Anything using Mouse by this point
