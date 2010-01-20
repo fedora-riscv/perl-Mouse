@@ -1,6 +1,6 @@
 Name:       perl-Mouse
-Version:    0.35
-Release:    2%{?dist}
+Version:    0.47
+Release:    1%{?dist}
 License:    GPL+ or Artistic
 Group:      Development/Libraries
 Summary:    Moose minus the antlers
@@ -8,7 +8,6 @@ Source:     http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.t
 Url:        http://search.cpan.org/dist/Mouse
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:   perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
-BuildArch:  noarch
 
 BuildRequires: perl(Class::Method::Modifiers) >= 1.01
 BuildRequires: perl(ExtUtils::MakeMaker) >= 6.42
@@ -21,6 +20,15 @@ BuildRequires: perl(Test::More) >= 0.88
 
 # "soft requires"
 BuildRequires: perl(MRO::Compat)
+
+### auto-added reqs!
+Requires:       perl(Scalar::Util) >= 1.14
+Requires:       perl(XSLoader) >= 0.1
+
+### auto-added brs!
+BuildRequires:  perl(Devel::PPPort)
+BuildRequires:  perl(ExtUtils::ParseXS)
+BuildRequires:  perl(XSLoader) >= 0.1
 
 %{?perl_default_filter}
 
@@ -63,10 +71,21 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc Changes benchmarks/ t/
-%{perl_vendorlib}/*
+%{perl_vendorarch}/*
+%exclude %dir %{perl_vendorarch}/auto
 %{_mandir}/man3/*.3*
 
 %changelog
+* Wed Jan 20 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.47-1
+- add perl_default_filter
+- we're no longer noarch
+- auto-update to 0.47 (by cpan-spec-update 0.01)
+- added a new br on perl(Devel::PPPort) 
+- added a new br on perl(ExtUtils::ParseXS)
+- added a new br on perl(XSLoader) (version 0.1)
+- added a new req on perl(Scalar::Util) (version 1.14)
+- added a new req on perl(XSLoader) (version 0.1)
+
 * Mon Dec  7 2009 Stepan Kasal <skasal@redhat.com> - 0.35-2
 - rebuild against perl 5.10.1
 
