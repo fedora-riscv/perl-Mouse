@@ -1,28 +1,30 @@
-Name:       perl-Mouse
-Version:    0.35
-Release:    1%{?dist}
-License:    GPL+ or Artistic
-Group:      Development/Libraries
-Summary:    Moose minus the antlers
-Source:     http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz
-Url:        http://search.cpan.org/dist/Mouse
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:   perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
-BuildArch:  noarch
+Name:           perl-Mouse
+Summary:        Moose minus the antlers
+Version:        0.50
+Release:        1%{?dist}
+License:        GPL+ or Artistic
+Group:          Development/Libraries
+Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
+URL:            http://search.cpan.org/dist/Mouse
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
-BuildRequires: perl(Class::Method::Modifiers) >= 1.01
-BuildRequires: perl(ExtUtils::MakeMaker) >= 6.42
-BuildRequires: perl(MRO::Compat)
-BuildRequires: perl(Scalar::Util) >= 1.14
-# tests
-BuildRequires: perl(Moose)
-BuildRequires: perl(Test::Exception) >= 0.27
-BuildRequires: perl(Test::More) >= 0.88
+BuildRequires:  perl(Class::Method::Modifiers) >= 1.01
+BuildRequires:  perl(Devel::PPPort)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
+BuildRequires:  perl(ExtUtils::ParseXS)
+BuildRequires:  perl(Moose)
+BuildRequires:  perl(MRO::Compat)
+BuildRequires:  perl(Scalar::Util) >= 1.14
+BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(XSLoader) >= 0.1
 
-# "soft requires"
-BuildRequires: perl(MRO::Compat)
+Requires:       perl(Scalar::Util) >= 1.14
+Requires:       perl(XSLoader) >= 0.1
 
 %{?perl_default_filter}
+%{?perl_default_subpackage_tests}
 
 %description
 Moose, a powerful metaobject-fuelled extension of the Perl 5 object system,
@@ -48,7 +50,7 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 
@@ -62,11 +64,29 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc Changes benchmarks/ t/
-%{perl_vendorlib}/*
+%doc Changes benchmarks/
+%{perl_vendorarch}/*
+%exclude %dir %{perl_vendorarch}/auto
 %{_mandir}/man3/*.3*
 
 %changelog
+* Sun Feb 28 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.50-1
+- update by Fedora::App::MaintainerTools 0.004
+- PERL_INSTALL_ROOT => DESTDIR
+
+* Wed Jan 20 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.47-1
+- add perl_default_filter
+- we're no longer noarch
+- auto-update to 0.47 (by cpan-spec-update 0.01)
+- added a new br on perl(Devel::PPPort) 
+- added a new br on perl(ExtUtils::ParseXS)
+- added a new br on perl(XSLoader) (version 0.1)
+- added a new req on perl(Scalar::Util) (version 1.14)
+- added a new req on perl(XSLoader) (version 0.1)
+
+* Mon Dec  7 2009 Stepan Kasal <skasal@redhat.com> - 0.35-2
+- rebuild against perl 5.10.1
+
 * Sun Sep 27 2009 Chris Weyl <cweyl@alumni.drew.edu> 0.35-1
 - update filtering
 - drop our soft-requires (except 1).  Anything using Mouse by this point
