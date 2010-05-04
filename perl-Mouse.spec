@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        0.53
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -76,6 +76,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Tue May 04 2010 Marcela Maslanova <mmaslano@redhat.com> - 0.53-2
+- Mass rebuild with perl-5.12.0
+
 * Fri Apr 16 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.53-1
 - update by Fedora::App::MaintainerTools 0.006
 - updating to latest GA CPAN version (0.53)
