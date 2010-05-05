@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.56
-Release:        1%{?dist}
+Version:        0.53
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -70,13 +70,13 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc Changes benchmarks/ example/ caveats/ tool/ 
+%doc Changes benchmarks/ example/ tool/ 
 %{perl_vendorarch}/*
 %exclude %dir %{perl_vendorarch}/auto
 %{_mandir}/man3/*.3*
 
 %changelog
-* Tue May 04 2010 Marcela Maslanova <mmaslano@redhat.com> - 0.56-1
+* Tue May 04 2010 Marcela Maslanova <mmaslano@redhat.com> - 0.53-2
 - Mass rebuild with perl-5.12.0 & update
 
 * Fri Apr 16 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.53-1
