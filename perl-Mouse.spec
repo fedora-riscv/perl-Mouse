@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        0.58
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Tue May 18 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.58-2
+- bump
+
 * Mon May 17 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.58-1
 - include .proverc in tests subpackage
 - update by Fedora::App::MaintainerTools 0.006
