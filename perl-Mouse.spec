@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.53
-Release:        2%{?dist}
+Version:        0.58
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -30,7 +30,7 @@ Requires:       perl(Scalar::Util) >= 1.14
 Requires:       perl(XSLoader) >= 0.1
 
 %{?perl_default_filter}
-%{?perl_default_subpackage_tests}
+%{?perl_subpackage_tests: %perl_subpackage_tests t/ .proverc }
 
 %description
 Moose, a powerful metaobject-fuelled extension of the Perl 5 object system,
@@ -48,6 +48,8 @@ functionality, faster.
 find .           -type f -exec chmod -c -x {} +
 find t/          -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
 find benchmarks/ -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
+
+echo '-r' > .proverc
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -76,6 +78,11 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Mon May 17 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.58-1
+- include .proverc in tests subpackage
+- update by Fedora::App::MaintainerTools 0.006
+- updating to latest GA CPAN version (0.58)
+
 * Tue May 04 2010 Marcela Maslanova <mmaslano@redhat.com> - 0.53-2
 - Mass rebuild with perl-5.12.0 & update
 
