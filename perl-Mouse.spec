@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.50
-Release:        1%{?dist}
+Version:        0.58
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -9,22 +9,28 @@ URL:            http://search.cpan.org/dist/Mouse
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
-BuildRequires:  perl(Class::Method::Modifiers) >= 1.01
-BuildRequires:  perl(Devel::PPPort)
+BuildRequires:  perl(Class::Method::Modifiers)
+BuildRequires:  perl(Devel::PPPort) >= 3.19
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
-BuildRequires:  perl(ExtUtils::ParseXS)
+BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
+BuildRequires:  perl(IO::File)
+BuildRequires:  perl(IO::String)
 BuildRequires:  perl(Moose)
 BuildRequires:  perl(MRO::Compat)
+BuildRequires:  perl(Path::Class)
 BuildRequires:  perl(Scalar::Util) >= 1.14
-BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Test::Deep)
+BuildRequires:  perl(Test::Exception) >= 0.29
 BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::Output)
+BuildRequires:  perl(Test::Requires) >= 0.03
 BuildRequires:  perl(XSLoader) >= 0.1
 
 Requires:       perl(Scalar::Util) >= 1.14
 Requires:       perl(XSLoader) >= 0.1
 
 %{?perl_default_filter}
-%{?perl_default_subpackage_tests}
+%{?perl_subpackage_tests: %perl_subpackage_tests t/ .proverc }
 
 %description
 Moose, a powerful metaobject-fuelled extension of the Perl 5 object system,
@@ -42,6 +48,8 @@ functionality, faster.
 find .           -type f -exec chmod -c -x {} +
 find t/          -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
 find benchmarks/ -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
+
+echo '-r' > .proverc
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -64,12 +72,37 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc Changes benchmarks/
+%doc Changes benchmarks/ example/ tool/ 
 %{perl_vendorarch}/*
 %exclude %dir %{perl_vendorarch}/auto
 %{_mandir}/man3/*.3*
 
 %changelog
+* Tue May 18 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.58-2
+- bump
+
+* Mon May 17 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.58-1
+- include .proverc in tests subpackage
+- update by Fedora::App::MaintainerTools 0.006
+- updating to latest GA CPAN version (0.58)
+
+* Tue May 04 2010 Marcela Maslanova <mmaslano@redhat.com> - 0.53-2
+- Mass rebuild with perl-5.12.0 & update
+
+* Fri Apr 16 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.53-1
+- update by Fedora::App::MaintainerTools 0.006
+- updating to latest GA CPAN version (0.53)
+- altered br on perl(Devel::PPPort) (0 => 3.19)
+- altered br on perl(ExtUtils::ParseXS) (0 => 2.21)
+- altered br on perl(Test::Exception) (0 => 0.29)
+- added a new br on perl(Test::Requires) (version 0.03)
+- added manual BR on perl(Class::Method::Modifiers) (or override to 0)
+- added manual BR on perl(Test::Deep) (or override to 0)
+- added manual BR on perl(Test::Output) (or override to 0)
+- added manual BR on perl(Path::Class) (or override to 0)
+- added manual BR on perl(IO::File) (or override to 0)
+- added manual BR on perl(IO::String) (or override to 0)
+
 * Sun Feb 28 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.50-1
 - update by Fedora::App::MaintainerTools 0.004
 - PERL_INSTALL_ROOT => DESTDIR
