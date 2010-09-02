@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        0.58
-Release:        2%{?dist}
+Release:        2.1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -20,7 +20,7 @@ BuildRequires:  perl(MRO::Compat)
 BuildRequires:  perl(Path::Class)
 BuildRequires:  perl(Scalar::Util) >= 1.14
 BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Test::Exception) >= 0.29
+BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Output)
 BuildRequires:  perl(Test::Requires) >= 0.03
@@ -78,6 +78,10 @@ rm -rf %{buildroot}
 %{_mandir}/man3/*.3*
 
 %changelog
+* Thu Sep 02 2010 Mark Chappell <tremble@tremble.org.uk> 0.58-2.1
+- Reduce the BR on perl-Test-Exception back to unversioned because
+  RHEL doesn't ship the later version and this doesn't break us
+
 * Tue May 18 2010 Chris Weyl <cweyl@alumni.drew.edu> 0.58-2
 - bump
 
