@@ -1,29 +1,30 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.58
-Release:        4%{?dist}
+Version:        0.92
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
 URL:            http://search.cpan.org/dist/Mouse
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 BuildRequires:  perl(Class::Method::Modifiers)
+BuildRequires:  perl(Declare::Constraints::Simple)
 BuildRequires:  perl(Devel::PPPort) >= 3.19
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
 BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
 BuildRequires:  perl(IO::File)
 BuildRequires:  perl(IO::String)
+BuildRequires:  perl(Locale::US)
 BuildRequires:  perl(Moose)
 BuildRequires:  perl(MRO::Compat)
 BuildRequires:  perl(Path::Class)
+BuildRequires:  perl(Regexp::Common)
 BuildRequires:  perl(Scalar::Util) >= 1.14
 BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Test::Exception) >= 0.29
+BuildRequires:  perl(Test::LeakTrace) >= 0.10
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Output)
-BuildRequires:  perl(Test::Requires) >= 0.03
 BuildRequires:  perl(XSLoader) >= 0.1
 
 Requires:       perl(Scalar::Util) >= 1.14
@@ -56,8 +57,6 @@ echo '-r' > .proverc
 make %{?_smp_mflags}
 
 %install
-rm -rf %{buildroot}
-
 make pure_install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -67,17 +66,18 @@ find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 %check
 make test
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
 %doc Changes benchmarks/ example/ tool/ 
 %{perl_vendorarch}/*
 %exclude %dir %{perl_vendorarch}/auto
 %{_mandir}/man3/*.3*
 
 %changelog
+* Thu May 12 2011 Iain Arnell <iarnell@gmail.com> 0.92-1
+- update to latest upstream version
+- clean up spec for modern rpmbuild
+- additional BRs for improved test coverage
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.58-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
