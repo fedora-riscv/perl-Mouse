@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.92
+Version:        0.93
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -25,10 +25,10 @@ BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::LeakTrace) >= 0.10
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Output)
-BuildRequires:  perl(XSLoader) >= 0.1
+BuildRequires:  perl(XSLoader) >= 0.02
 
 Requires:       perl(Scalar::Util) >= 1.14
-Requires:       perl(XSLoader) >= 0.1
+Requires:       perl(XSLoader) >= 0.02
 
 %{?perl_default_filter}
 %{?perl_subpackage_tests: %perl_subpackage_tests t/ .proverc }
@@ -73,6 +73,9 @@ make test
 %{_mandir}/man3/*.3*
 
 %changelog
+* Sun Jun 26 2011 Iain Arnell <iarnell@gmail.com> 0.93-1
+- update to latest upstream version
+
 * Thu May 12 2011 Iain Arnell <iarnell@gmail.com> 0.92-1
 - update to latest upstream version
 - clean up spec for modern rpmbuild
