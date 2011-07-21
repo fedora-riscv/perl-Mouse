@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        0.93
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -73,6 +73,9 @@ make test
 %{_mandir}/man3/*.3*
 
 %changelog
+* Thu Jul 21 2011 Iain Arnell <iarnell@gmail.com> 0.93-3
+- Perl mass rebuild
+
 * Wed Jul 20 2011 Iain Arnell <iarnell@gmail.com> 0.93-2
 - Perl mass rebuild
 
