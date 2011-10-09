@@ -36,7 +36,7 @@ Provides:       perl(Any-Moose) = %{version}
 %{?perl_subpackage_tests: %perl_subpackage_tests t/ .proverc }
 
 %description
-Moose, a powerful metaobject-fuelled extension of the Perl 5 object system,
+Moose, a powerful metaobject-fueled extension of the Perl 5 object system,
 is wonderful.  (For more information on Moose, please see 'perldoc Moose'
 after installing the perl-Moose package.)
 
@@ -51,6 +51,8 @@ functionality, faster.
 find .           -type f -exec chmod -c -x {} +
 find t/          -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
 find benchmarks/ -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
+find example/    -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
+find tool/       -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
 
 echo '-r' > .proverc
 
@@ -61,6 +63,7 @@ make %{?_smp_mflags}
 %install
 make pure_install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
+find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 
 %{_fixperms} %{buildroot}/*
@@ -78,6 +81,7 @@ make test
 * Sun Oct 09 2011 Iain Arnell <iarnell@gmail.com> 0.95-1
 - update to latest upstream version
 - add virtual provides for perl-Any-Moose
+- clean up some rpmlint warnings
 
 * Thu Jul 21 2011 Iain Arnell <iarnell@gmail.com> 0.93-3
 - Perl mass rebuild
