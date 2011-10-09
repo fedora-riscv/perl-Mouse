@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.93
-Release:        3%{?dist}
+Version:        0.95
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -12,7 +12,6 @@ BuildRequires:  perl(Class::Method::Modifiers)
 BuildRequires:  perl(Declare::Constraints::Simple)
 BuildRequires:  perl(Devel::PPPort) >= 3.19
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
-BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
 BuildRequires:  perl(IO::File)
 BuildRequires:  perl(IO::String)
 BuildRequires:  perl(Locale::US)
@@ -29,6 +28,9 @@ BuildRequires:  perl(XSLoader) >= 0.02
 
 Requires:       perl(Scalar::Util) >= 1.14
 Requires:       perl(XSLoader) >= 0.02
+
+# virtual provides for perl-Any-Moose
+Provides:       perl(Any-Moose) = %{version}
 
 %{?perl_default_filter}
 %{?perl_subpackage_tests: %perl_subpackage_tests t/ .proverc }
@@ -73,6 +75,10 @@ make test
 %{_mandir}/man3/*.3*
 
 %changelog
+* Sun Oct 09 2011 Iain Arnell <iarnell@gmail.com> 0.95-1
+- update to latest upstream version
+- add virtual provides for perl-Any-Moose
+
 * Thu Jul 21 2011 Iain Arnell <iarnell@gmail.com> 0.93-3
 - Perl mass rebuild
 
