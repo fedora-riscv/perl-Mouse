@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.95
+Version:        0.97
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -78,6 +78,9 @@ make test
 %{_mandir}/man3/*.3*
 
 %changelog
+* Sat Oct 15 2011 Iain Arnell <iarnell@gmail.com> 0.97-1
+- update to latest upstream version
+
 * Sun Oct 09 2011 Iain Arnell <iarnell@gmail.com> 0.95-1
 - update to latest upstream version
 - add virtual provides for perl-Any-Moose
