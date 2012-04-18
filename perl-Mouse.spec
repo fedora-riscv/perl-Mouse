@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        0.97
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -45,6 +45,16 @@ made over the years, the compile time penalty is a non-starter for some
 applications.  Mouse aims to alleviate this by providing a subset of Moose's
 functionality, faster.
 
+%package -n perl-Test-Mouse
+License:    GPL+ or Artistic
+Group:      Development/Libraries
+Summary:    Test functions for Mouse specific features
+Requires:   %{name} = %{version}-%{release}
+
+%description -n perl-Test-Mouse
+This module provides some useful test functions for Mouse based classes. It is
+an experimental first release, so comments and suggestions are very welcome.
+
 %prep
 %setup -q -n Mouse-%{version}
 
@@ -76,8 +86,17 @@ make test
 %{perl_vendorarch}/*
 %exclude %dir %{perl_vendorarch}/auto
 %{_mandir}/man3/*.3*
+%exclude %{perl_vendorarch}/Test
+%exclude %{_mandir}/man3/Test::Mouse*
+
+%files -n perl-Test-Mouse
+%{perl_vendorarch}/Test
+%{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Wed Apr 18 2012 Iain Arnell <iarnell@gmail.com> 0.97-3
+- sub-package Test::Mouse (rhbz#813698)
+
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.97-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
