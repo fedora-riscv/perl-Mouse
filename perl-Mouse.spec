@@ -38,6 +38,8 @@ Obsoletes:      %{name}-tests < 0.97-3
 Provides:       %{name}-tests = %{version}-%{release}
 
 %{?perl_default_filter}
+# filter unversioned Mouse::Util provide from Mouse/PurePerl.pm
+%global __provides_exclude %{?__provides_exclude:%__provides_exclude|}perl\\(Mouse::Util\\)$
 
 %description
 Moose, a powerful metaobject-fueled extension of the Perl 5 object system,
@@ -97,6 +99,7 @@ make test
 * Wed Apr 18 2012 Iain Arnell <iarnell@gmail.com> 0.97-3
 - sub-package Test::Mouse (rhbz#813698)
 - drop tests sub-package; move tests to main package documentation
+- filter unversioned Mouse::Util from provides
 
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.97-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
