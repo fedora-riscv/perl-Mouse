@@ -32,8 +32,12 @@ Requires:       perl(XSLoader) >= 0.02
 # virtual provides for perl-Any-Moose
 Provides:       perl(Any-Moose) = %{version}
 
+# obsolete/provide old tests subpackage
+# can be removed during F19 development cycle
+Obsoletes:      %{name}-tests < 0.97-3
+Provides:       %{name}-tests = %{version}-%{release}
+
 %{?perl_default_filter}
-%{?perl_subpackage_tests: %perl_subpackage_tests t/ .proverc }
 
 %description
 Moose, a powerful metaobject-fueled extension of the Perl 5 object system,
@@ -59,12 +63,8 @@ an experimental first release, so comments and suggestions are very welcome.
 %setup -q -n Mouse-%{version}
 
 find .           -type f -exec chmod -c -x {} +
-find t/          -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
-find benchmarks/ -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
-find example/    -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
-find tool/       -type f -exec perl -pi -e 's|^#!perl|#!%{__perl}|' {} +
-
-echo '-r' > .proverc
+find t/ xt/ benchmarks/ example/ tool/ -type f -print0 \
+| xargs -0 sed -i '1s|^#!.*perl|#!%{__perl}|'
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -82,7 +82,7 @@ find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 make test
 
 %files
-%doc Changes benchmarks/ example/ tool/ 
+%doc Changes benchmarks/ example/ tool/ t/ xt/
 %{perl_vendorarch}/*
 %exclude %dir %{perl_vendorarch}/auto
 %{_mandir}/man3/*.3*
@@ -96,6 +96,7 @@ make test
 %changelog
 * Wed Apr 18 2012 Iain Arnell <iarnell@gmail.com> 0.97-3
 - sub-package Test::Mouse (rhbz#813698)
+- drop tests sub-package; move tests to main package documentation
 
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.97-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
