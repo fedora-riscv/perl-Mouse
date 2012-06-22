@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        0.97
-Release:        3%{?dist}
+Release:        4%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -96,6 +96,9 @@ make test
 %{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Fri Jun 22 2012 Petr Pisar <ppisar@redhat.com> - 0.97-4
+- Perl 5.16 rebuild
+
 * Wed Apr 18 2012 Iain Arnell <iarnell@gmail.com> 0.97-3
 - sub-package Test::Mouse (rhbz#813698)
 - drop tests sub-package; move tests to main package documentation
