@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        0.97
-Release:        4%{?dist}
+Release:        5%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -96,6 +96,9 @@ make test
 %{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Fri Jul 20 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.97-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Fri Jun 22 2012 Petr Pisar <ppisar@redhat.com> - 0.97-4
 - Perl 5.16 rebuild
 
