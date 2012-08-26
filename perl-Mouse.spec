@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        0.99
+Version:        1.01
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -96,6 +96,9 @@ make test
 %{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Sun Aug 26 2012 Iain Arnell <iarnell@gmail.com> 1.01-1
+- update to latest upstream version
+
 * Sat Jul 21 2012 Iain Arnell <iarnell@gmail.com> 0.99-1
 - update to latest upstream version
 
