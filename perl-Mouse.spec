@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        1.04
-Release:        2%{?dist}
+Version:        1.05
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -31,11 +31,6 @@ Requires:       perl(XSLoader) >= 0.02
 
 # virtual provides for perl-Any-Moose
 Provides:       perl(Any-Moose) = %{version}
-
-# obsolete/provide old tests subpackage
-# can be removed during F19 development cycle
-Obsoletes:      %{name}-tests < 0.97-3
-Provides:       %{name}-tests = %{version}-%{release}
 
 %{?perl_default_filter}
 # filter unversioned Mouse::Util provide from Mouse/PurePerl.pm
@@ -96,6 +91,10 @@ make test
 %{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Fri Feb 15 2013 Iain Arnell <iarnell@gmail.com> 1.05-1
+- update to latest upstream version
+- drop old tests sub-package obsoletes/provides
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.04-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
