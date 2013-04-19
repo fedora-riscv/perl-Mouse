@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        1.05
+Version:        1.06
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -12,6 +12,7 @@ BuildRequires:  perl(Class::Method::Modifiers)
 BuildRequires:  perl(Declare::Constraints::Simple)
 BuildRequires:  perl(Devel::PPPort) >= 3.19
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
+BuildRequires:  perl(Fatal)
 BuildRequires:  perl(IO::File)
 BuildRequires:  perl(IO::String)
 BuildRequires:  perl(Locale::US)
@@ -91,6 +92,9 @@ make test
 %{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Fri Apr 19 2013 Iain Arnell <iarnell@gmail.com> 1.06-1
+- update to latest upstream version
+
 * Fri Feb 15 2013 Iain Arnell <iarnell@gmail.com> 1.05-1
 - update to latest upstream version
 - drop old tests sub-package obsoletes/provides
