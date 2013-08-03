@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        1.06
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -92,6 +92,9 @@ make test
 %{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Sat Aug 03 2013 Petr Pisar <ppisar@redhat.com> - 1.06-2
+- Perl 5.18 rebuild
+
 * Fri Apr 19 2013 Iain Arnell <iarnell@gmail.com> 1.06-1
 - update to latest upstream version
 
