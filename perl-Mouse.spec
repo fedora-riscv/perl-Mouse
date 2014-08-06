@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        1.11
-Release:        2%{?dist}
+Version:        1.13
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{version}.tar.gz 
@@ -25,6 +25,7 @@ BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::LeakTrace) >= 0.10
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Output)
+BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(XSLoader) >= 0.02
 
 Requires:       perl(Scalar::Util) >= 1.14
@@ -92,6 +93,9 @@ make test
 %{_mandir}/man3/Test::Mouse*
 
 %changelog
+* Wed Aug 06 2014 Jitka Plesnikova <jplesnik@redhat.com> - 1.13-1
+- 1.13 bump
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.11-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
