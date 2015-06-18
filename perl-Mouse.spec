@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.4.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
@@ -169,6 +169,9 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.4.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Mon Jun 08 2015 Jitka Plesnikova <jplesnik@redhat.com> - 2.4.2-3
 - Perl 5.22 rebuild
 
