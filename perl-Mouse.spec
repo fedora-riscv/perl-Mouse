@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.4.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
@@ -9,6 +9,12 @@ Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-%{versio
 # The build of Data::Dump::Streamer fails with 5.21.x and higher
 # Disable the optional test to build Mouse with Perl 5.22
 Patch0:         Mouse-2.4.2-Disable-using-Data-Dump-Streamer.patch
+# Fix interaction with threads in perl-5.22, not compatible with older perls,
+# bug #1235938, <https://github.com/gfx/p5-Mouse/pull/50>
+Patch1:         Mouse-2.4.2-Fix-thread-issue-for-Perl-5.22.0-or-higher.patch
+# Enable and correct threads test, not compatible with older perls,
+# bug #1235938, <https://github.com/gfx/p5-Mouse/pull/50>
+Patch2:         Mouse-2.4.2-Fix-test-code.patch
 # Module Build
 BuildRequires:  perl
 BuildRequires:  perl(Devel::PPPort) >= 3.19
@@ -106,6 +112,8 @@ an experimental first release, so comments and suggestions are very welcome.
 %setup -q -n Mouse-%{version}
 %if 0%(perl -e 'print $] >= 5.022')
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 %endif
 
 # Fix permissions
@@ -169,6 +177,9 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Fri Jun 26 2015 Petr Pisar <ppisar@redhat.com> - 2.4.2-5
+- Fix interaction with threads in perl-5.22 (bug #1235938)
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.4.2-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
