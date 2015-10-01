@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.4.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
@@ -62,7 +62,11 @@ BuildRequires:  perl(Locale::US)
 BuildRequires:  perl(Moose)
 BuildRequires:  perl(Params::Coerce)
 BuildRequires:  perl(Path::Class)
+%if !%{defined perl_bootstrap}
+# Break build cycle: perl-Mouse → perl-Pod-Coverage-Moose
+# → perl-namespace-autoclean → perl-Mouse
 BuildRequires:  perl(Pod::Coverage::Moose)
+%endif
 BuildRequires:  perl(Regexp::Common)
 BuildRequires:  perl(Test)
 BuildRequires:  perl(Test::Deep)
@@ -169,6 +173,10 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Thu Oct 01 2015 Petr Pisar <ppisar@redhat.com> - 2.4.5-2
+- Break build cycle: perl-Mouse → perl-Pod-Coverage-Moose
+  → perl-namespace-autoclean → perl-Mouse
+
 * Sun Aug 16 2015 Emmanuel Seyman <emmanuel@seyman.fr> - 2.4.5-1
 - Update to 2.4.5
 - Drop upstreamed patches
