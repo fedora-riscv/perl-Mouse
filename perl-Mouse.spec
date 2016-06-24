@@ -11,6 +11,8 @@ Source0:        http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Mouse-v%{vers
 Patch0:         Mouse-2.4.2-Disable-using-Data-Dump-Streamer.patch
 # Module Build
 BuildRequires:  perl
+BuildRequires:  perl-devel
+BuildRequires:  perl-generators
 BuildRequires:  perl(Devel::PPPort) >= 3.19
 BuildRequires:  perl(ExtUtils::ParseXS)
 BuildRequires:  perl(Fatal)
