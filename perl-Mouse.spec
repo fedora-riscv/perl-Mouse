@@ -1,13 +1,14 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.4.5
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
 Source0:        http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Mouse-v%{version}.tar.gz 
 # The build of Data::Dump::Streamer fails with 5.21.x and higher
 # Disable the optional test to build Mouse with Perl 5.22
+%bcond_with ddstreamer
 Patch0:         Mouse-2.4.2-Disable-using-Data-Dump-Streamer.patch
 # Module Build
 BuildRequires:  perl
@@ -55,7 +56,7 @@ BuildRequires:  perl(Tie::Array)
 BuildRequires:  perl(Tie::Hash)
 BuildRequires:  perl(Tie::Scalar)
 # Optional Tests
-%if ! 0%(perl -e 'print $] >= 5.022')
+%if %{with ddstreamer}
 BuildRequires:  perl(Data::Dump::Streamer)
 %endif
 BuildRequires:  perl(Declare::Constraints::Simple)
@@ -110,7 +111,7 @@ an experimental first release, so comments and suggestions are very welcome.
 
 %prep
 %setup -q -n Mouse-v%{version}
-%if 0%(perl -e 'print $] >= 5.022')
+%if !%{with ddstreamer}
 %patch0 -p1
 %endif
 
@@ -175,6 +176,9 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Fri Jul 22 2016 Petr Pisar <ppisar@redhat.com> - 2.4.5-6
+- Disable Data::Dumper::streamer everywhere
+
 * Wed May 18 2016 Jitka Plesnikova <jplesnik@redhat.com> - 2.4.5-5
 - Perl 5.24 re-rebuild of bootstrapped packages
 
