@@ -1,12 +1,14 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.4.5
-Release:        7%{?dist}
+Version:        2.4.6
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
-Source0:        http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Mouse-v%{version}.tar.gz 
+Source0:        http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Mouse-v%{version}.tar.gz
 # Module Build
+BuildRequires:  coreutils
+BuildRequires:  findutils
 BuildRequires:  perl
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
@@ -14,7 +16,6 @@ BuildRequires:  perl(Devel::PPPort) >= 3.19
 BuildRequires:  perl(ExtUtils::ParseXS)
 BuildRequires:  perl(Fatal)
 BuildRequires:  perl(File::Basename)
-BuildRequires:  perl(File::Copy)
 BuildRequires:  perl(File::Find)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(Module::Build::XSUtil)
@@ -119,8 +120,8 @@ perl Build.PL --installdirs=vendor
 
 %install
 ./Build install --destdir=%{buildroot} --create_packlist=0
-find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
-%{_fixperms} %{buildroot}
+find %{buildroot} -type f -name '*.bs' -empty -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 ./Build test
@@ -167,6 +168,12 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Fri Jan  6 2017 Paul Howarth <paul@city-fan.org> - 2.4.6-1
+- Update to 2.4.6
+  - Fix test for older Perls (GH#68)
+  - Define macros for older Visual Studio compiler (GH#66)
+- Simplify find command using -empty and -delete
+
 * Fri Sep 02 2016 Petr Pisar <ppisar@redhat.com> - 2.4.5-7
 - Enable optional test with Data::Dump::Steamer (bug #1231204)
 
@@ -334,7 +341,7 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 - add perl_default_filter
 - we're no longer noarch
 - auto-update to 0.47 (by cpan-spec-update 0.01)
-- added a new br on perl(Devel::PPPort) 
+- added a new br on perl(Devel::PPPort)
 - added a new br on perl(ExtUtils::ParseXS)
 - added a new br on perl(XSLoader) (version 0.1)
 - added a new req on perl(Scalar::Util) (version 1.14)
