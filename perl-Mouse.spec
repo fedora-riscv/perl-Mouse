@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.4.6
+Version:        2.4.7
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -168,6 +168,11 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Sun Jan 15 2017 Paul Howarth <paul@city-fan.org> - 2.4.7-1
+- Update to 2.4.7
+  - Workaround for GH#64 (GH#67); in some case stack is corrupted at more than
+    23 attributes (this change may make things a bit slow in that case)
+
 * Fri Jan  6 2017 Paul Howarth <paul@city-fan.org> - 2.4.6-1
 - Update to 2.4.6
   - Fix test for older Perls (GH#68)
