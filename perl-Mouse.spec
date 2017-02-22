@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.4.8
+Version:        2.4.9
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -168,6 +168,10 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Wed Feb 22 2017 Paul Howarth <paul@city-fan.org> - 2.4.9-1
+- Update to 2.4.9
+  - Fix build issue on newer Perl without '.' in @INC
+
 * Thu Feb 16 2017 Paul Howarth <paul@city-fan.org> - 2.4.8-1
 - Update to 2.4.8
   - Fix stack collapse (GH#71)
