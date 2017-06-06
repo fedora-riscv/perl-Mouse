@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.4.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
@@ -168,6 +168,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Tue Jun 06 2017 Jitka Plesnikova <jplesnik@redhat.com> - 2.4.9-2
+- Perl 5.26 rebuild
+
 * Wed Feb 22 2017 Paul Howarth <paul@city-fan.org> - 2.4.9-1
 - Update to 2.4.9
   - Fix build issue on newer Perl without '.' in @INC
