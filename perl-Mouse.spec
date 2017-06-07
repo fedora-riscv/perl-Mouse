@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.4.9
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
@@ -168,6 +168,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Wed Jun 07 2017 Jitka Plesnikova <jplesnik@redhat.com> - 2.4.9-3
+- Perl 5.26 re-rebuild of bootstrapped packages
+
 * Tue Jun 06 2017 Jitka Plesnikova <jplesnik@redhat.com> - 2.4.9-2
 - Perl 5.26 rebuild
 
