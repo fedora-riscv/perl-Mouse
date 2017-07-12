@@ -9,7 +9,7 @@ Source0:        http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Mouse-v%{vers
 # Module Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
-BuildRequires:  perl
+BuildRequires:  perl-interpreter
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
 BuildRequires:  perl(Devel::PPPort) >= 3.19
