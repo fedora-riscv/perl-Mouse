@@ -1,17 +1,16 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.4.9
-Release:        3%{?dist}
+Version:        2.4.10
+Release:        1%{?dist}
 License:        GPL+ or Artistic
-Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Mouse
-Source0:        http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Mouse-v%{version}.tar.gz
+Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-v%{version}.tar.gz
 # Module Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(Devel::PPPort) >= 3.19
 BuildRequires:  perl(ExtUtils::ParseXS)
 BuildRequires:  perl(Fatal)
@@ -96,7 +95,6 @@ functionality, faster.
 
 %package -n perl-Test-Mouse
 License:    GPL+ or Artistic
-Group:      Development/Libraries
 Summary:    Test functions for Mouse specific features
 Requires:   %{name} = %{version}-%{release}
 
@@ -168,6 +166,14 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Tue Jul 18 2017 Paul Howarth <paul@city-fan.org> - 2.4.10-1
+- Update to 2.4.10
+  - Support Moose-like oneliners (GH#51)
+  - Various minor fixes (GH#58)
+- This release by GFUJI → update source URL
+- BR: perl-interpreter rather than perl
+- Drop legacy Group: tags
+
 * Wed Jun 07 2017 Jitka Plesnikova <jplesnik@redhat.com> - 2.4.9-3
 - Perl 5.26 re-rebuild of bootstrapped packages
 
