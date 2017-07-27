@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.4.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/Mouse
 Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-v%{version}.tar.gz
@@ -166,6 +166,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Tue Jul 18 2017 Paul Howarth <paul@city-fan.org> - 2.4.10-1
 - Update to 2.4.10
   - Support Moose-like oneliners (GH#51)
