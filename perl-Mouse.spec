@@ -1,18 +1,20 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.4.10
-Release:        3%{?dist}
+Version:        2.5.0
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/Mouse
-Source0:        http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Mouse-v%{version}.tar.gz
+Source0:        http://search.cpan.org/CPAN/authors/id/S/SK/SKAJI/Mouse-v%{version}.tar.gz
 # Module Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
 BuildRequires:  perl-interpreter
-BuildRequires:  perl(Devel::PPPort) >= 3.19
-BuildRequires:  perl(ExtUtils::ParseXS)
+BuildRequires:  perl(Devel::PPPort) >= 3.33
+BuildRequires:  perl(ExtUtils::ParseXS) >= 3.22
 BuildRequires:  perl(Fatal)
 BuildRequires:  perl(File::Basename)
 BuildRequires:  perl(File::Find)
@@ -31,6 +33,7 @@ BuildRequires:  perl(overload)
 BuildRequires:  perl(Scalar::Util) >= 1.14
 BuildRequires:  perl(strict)
 BuildRequires:  perl(Test::Builder)
+BuildRequires:  perl(version) >= 0.9913
 BuildRequires:  perl(warnings)
 BuildRequires:  perl(XSLoader) >= 0.02
 # Test Suite
@@ -166,6 +169,13 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Mon Nov 27 2017 Paul Howarth <paul@city-fan.org> - 2.5.0-1
+- Update to 2.5.0
+  - Fix build under perl 5.8 (GH#63, GH#76, GH#79)
+  - Use version->declare() to declare $VERSION (GH#55, GH#80)
+  - Make 'prove -br t' work with dot-not-in-INC perls (GH#81)
+- This release by SKAJI → update source URL
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.4.10-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
