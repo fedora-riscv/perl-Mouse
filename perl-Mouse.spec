@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.5.0
+Version:        2.5.1
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/Mouse
@@ -112,7 +112,7 @@ an experimental first release, so comments and suggestions are very welcome.
 find . -type f -exec chmod -c -x {} ';'
 
 # Fix shellbangs
-find t/ xt/ benchmarks/ example/ tool/ -type f -print0 |
+find benchmarks/ example/ t/ tool/ -type f -print0 |
   xargs -0 sed -i '1s|^#!.*perl|#!%{__perl}|'
 
 %build
@@ -128,7 +128,7 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 ./Build test
 
 %files
-%doc Changes benchmarks/ example/ tool/ t/ xt/
+%doc Changes benchmarks/ example/ tool/ t/
 %{perl_vendorarch}/auto/Mouse/
 %{perl_vendorarch}/Mouse.pm
 %{perl_vendorarch}/Mouse/
@@ -169,6 +169,11 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Mon Jan  8 2018 Paul Howarth <paul@city-fan.org> - 2.5.1-1
+- Update to 2.5.1
+  - Use PERL_UNUSED_RESULT (GH#83)
+  - Apply several minor patches, especially for packaging (GH#84)
+
 * Mon Nov 27 2017 Paul Howarth <paul@city-fan.org> - 2.5.0-1
 - Update to 2.5.0
   - Fix build under perl 5.8 (GH#63, GH#76, GH#79)
