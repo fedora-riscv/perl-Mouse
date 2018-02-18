@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.5.1
-Release:        2%{?dist}
+Version:        2.5.2
+Release:        1%{?dist}
 License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/Mouse
 Source0:        http://search.cpan.org/CPAN/authors/id/S/SK/SKAJI/Mouse-v%{version}.tar.gz
@@ -169,6 +169,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Sun Feb 18 2018 Emmanuel Seyman <emmanuel@seyman.fr> - 2.5.2-1
+- Update to 2.5.2
+
 * Thu Feb 08 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
