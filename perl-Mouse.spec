@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.5.2
+Version:        2.5.4
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 URL:            http://search.cpan.org/dist/Mouse
@@ -169,6 +169,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Sun May 06 2018 Emmanuel Seyman <emmanuel@seyman.fr> - 2.5.4-1
+- Update to 2.5.4
+
 * Sun Feb 18 2018 Emmanuel Seyman <emmanuel@seyman.fr> - 2.5.2-1
 - Update to 2.5.2
 
