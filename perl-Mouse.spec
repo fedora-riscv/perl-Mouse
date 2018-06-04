@@ -3,8 +3,8 @@ Summary:        Moose minus the antlers
 Version:        2.5.4
 Release:        1%{?dist}
 License:        GPL+ or Artistic
-URL:            http://search.cpan.org/dist/Mouse
-Source0:        http://search.cpan.org/CPAN/authors/id/S/SK/SKAJI/Mouse-v%{version}.tar.gz
+URL:            https://metacpan.org/release/Mouse
+Source0:        https://cpan.metacpan.org/authors/id/S/SK/SKAJI/Mouse-v%{version}.tar.gz
 # Module Build
 BuildRequires:  coreutils
 BuildRequires:  findutils
