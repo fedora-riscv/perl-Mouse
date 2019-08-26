@@ -1,6 +1,6 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
-Version:        2.5.7
+Version:        2.5.9
 Release:        1%{?dist}
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Mouse
@@ -61,6 +61,9 @@ BuildRequires:  perl(Declare::Constraints::Simple)
 BuildRequires:  perl(HTTP::Headers)
 BuildRequires:  perl(Locale::US)
 BuildRequires:  perl(Moose)
+%if !%{defined perl_bootstrap}
+BuildRequires:  perl(MouseX::Foreign)
+%endif
 BuildRequires:  perl(Params::Coerce)
 BuildRequires:  perl(Path::Class)
 %if !%{defined perl_bootstrap}
@@ -170,9 +173,15 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Mon Aug 26 2019 Paul Howarth <paul@city-fan.org> - 2.5.9-1
+- Update to 2.5.9
+  - Fix segmentation fault that occurs when using MouseX::Foreign and
+    role->apply at the same time (GH#100, GH#101)
+
 * Tue Aug 13 2019 Paul Howarth <paul@city-fan.org> - 2.5.7-1
 - Update to 2.5.7
   - Bump Module::Build::XSUtil prereq (GH#99)
+  - Fix typo (GH#98)
 
 * Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.6-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
