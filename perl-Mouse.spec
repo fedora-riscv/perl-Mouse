@@ -1,12 +1,7 @@
-# Bootstrap for EPEL-8
-%if 0%{?el8:1}
-%global perl_bootstrap 1
-%endif
-
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.5.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Mouse
 Source0:        https://cpan.metacpan.org/modules/by-module/Test/Mouse-v%{version}.tar.gz
@@ -178,6 +173,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Fri Oct 18 2019 Paul Howarth <paul@city-fan.org> - 2.5.9-2
+- Post EPEL-8 bootstrap rebuild
+
 * Mon Aug 26 2019 Paul Howarth <paul@city-fan.org> - 2.5.9-1
 - Update to 2.5.9
   - Fix segmentation fault that occurs when using MouseX::Foreign and
