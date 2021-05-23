@@ -1,7 +1,7 @@
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.5.10
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Mouse
 Source0:        https://cpan.metacpan.org/modules/by-module/Test/Mouse-v%{version}.tar.gz
@@ -172,6 +172,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Sun May 23 2021 Jitka Plesnikova <jplesnik@redhat.com> - 2.5.10-6
+- Perl 5.34 rebuild
+
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.10-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
