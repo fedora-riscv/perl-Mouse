@@ -1,12 +1,7 @@
-# Bootstrap for EPEL
-%if 0%{?rhel} > 0
-%global perl_bootstrap 1
-%endif
-
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.5.10
-Release:        8%{?dist}
+Release:        9%{?dist}
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Mouse
 Source0:        https://cpan.metacpan.org/modules/by-module/Test/Mouse-v%{version}.tar.gz
@@ -177,6 +172,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Test::Mouse.3*
 
 %changelog
+* Tue Dec 28 2021 Paul Howarth <paul@city-fan.org> - 2.5.10-9
+- Post EPEL-9 bootstrap rebuild
+
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.10-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
