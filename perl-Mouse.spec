@@ -1,3 +1,8 @@
+# Bootstrap for EPEL
+%if 0%{?rhel} > 0
+%global perl_bootstrap 1
+%endif
+
 Name:           perl-Mouse
 Summary:        Moose minus the antlers
 Version:        2.5.10
