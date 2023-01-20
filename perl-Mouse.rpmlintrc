@@ -1,7 +1,0 @@
-from Config import *
-
-addFilter("spelling-error %description -l en_US metaobject -> ")
-addFilter("spelling-error %description -l en_US perldoc -> ")
-
-# perl-Test-Mouse has no arch-specific code
-addFilter("only-non-binary-in-usr-lib")
